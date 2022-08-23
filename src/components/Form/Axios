@@ -1,0 +1,63 @@
+import React from 'react'
+
+const Axios = () => {
+
+    var formData = new FormData();
+
+   {/*} var fileField = document.querySelector('input[type="file"]');
+    formData.append('position_id', 2);
+    formData.append('name', 'Jhon');
+    formData.append('email', 'Jhon@gmail.com');
+    formData.append('phone', '+380955388485'); */}
+    
+const handleSubmit =
+
+
+
+    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users',
+        {
+            method: 'POST', body: formData, headers: {
+                'Token': `${localStorage.getItem('token')}`,
+            },
+        })
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+            console.log(data);
+            if (data.success) { window.alert('Success!'); }
+            else { window.alert('Error!'); }
+        })
+
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input type="text" name="name" placeholder="name" placeholder="name" />
+                <input type="email" name="email" placeholder="email"   />
+                <input type="number" name="number" placeholder="number"   />
+              
+                <h3>Select your position</h3>
+                <radio >
+                    <input type="radio" value="Fronted developer" id="Fronted developer" name="gender" />
+                    <label for="Fronted developer">Fronted developer</label>
+
+                    <input type="radio" value="Backend developer" id="Backend developer" name="gender"  />
+                    <label for="Backend developer">Backend developer</label>
+
+                    <input type="radio" value="Design" id="Design" name="gender"  />
+                    <label for="Design">Design</label>
+
+                    <input type="radio" value="QA" id="QA" name="gender"  />
+                    <label for="QA">QA</label>
+                </radio>
+                <br />
+
+                <input type="file" name="photo" placeholder="photo"  />
+                
+
+                <input type="submit" />
+            </form>
+        </div>
+    )
+}
+
+export default Axios
